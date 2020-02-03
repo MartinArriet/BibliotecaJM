@@ -20,14 +20,17 @@ namespace BibliotecaJM
         public FM_Prestamos(UsuarioActual usuarioActual)
         {
             this.usuarioActual = usuarioActual;
+            InitializeComponent();
         }
 
         private void FM_Prestamos_Load(object sender, EventArgs e)
         {
+            // TODO: esta línea de código carga datos en la tabla 'dS_Lectores.lectores' Puede moverla o quitarla según sea necesario.
+            this.lectoresTableAdapter.Fill(this.dS_Lectores.lectores);
             // TODO: esta línea de código carga datos en la tabla 'dS_Libros.libros' Puede moverla o quitarla según sea necesario.
             this.librosTableAdapter.Fill(this.dS_Libros.libros);
             // TODO: esta línea de código carga datos en la tabla 'dS_LibrosPrestados.LibrosPrestados' Puede moverla o quitarla según sea necesario.
-            this.librosPrestadosTableAdapter.Fill(this.dS_LibrosPrestados.LibrosPrestados);
+            //this.librosPrestadosTableAdapter.Fill(this.dS_LibrosPrestados.LibrosPrestados);
 
         }
 
@@ -35,7 +38,8 @@ namespace BibliotecaJM
         {
             if (Int32.Parse(tbIdLectorPrestamo.Text) !=-1)
             {
-                this.librosPrestadosTableAdapter.FillByIDorTitulo(this.dS_LibrosPrestados.LibrosPrestados, Int32.Parse(tbIdLectorPrestamo.Text), null);
+                this.lectoresTableAdapter.FillByIDorNombre(this.dS_Lectores.lectores, Int32.Parse(tbIdLectorPrestamo.Text),null);
+                this.librosPrestadosTableAdapter.FillByID(this.dS_LibrosPrestados.LibrosPrestados,);
             }
         }
 
@@ -43,7 +47,7 @@ namespace BibliotecaJM
         {
             if (tbNombrePrestamo.Text !="")
             {
-                this.librosPrestadosTableAdapter.FillByIDorTitulo(this.dS_LibrosPrestados.LibrosPrestados, -1, tbNombrePrestamo.Text);
+                this.lectoresTableAdapter.FillByIDorNombre(this.dS_Lectores.lectores, -1, tbNombrePrestamo.Text);
             }
         }
     }

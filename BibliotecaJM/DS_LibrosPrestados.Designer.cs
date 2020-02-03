@@ -287,6 +287,8 @@ namespace BibliotecaJM {
             
             private global::System.Data.DataColumn columnfecha_devol_pre;
             
+            private global::System.Data.DataColumn columnid_lec_pre;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public LibrosPrestadosDataTable() {
@@ -354,6 +356,14 @@ namespace BibliotecaJM {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn id_lec_preColumn {
+                get {
+                    return this.columnid_lec_pre;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -389,13 +399,14 @@ namespace BibliotecaJM {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public LibrosPrestadosRow AddLibrosPrestadosRow(int id_lib, string titulo_lib, System.DateTime fecha_presta_pre, System.DateTime fecha_devol_pre) {
+            public LibrosPrestadosRow AddLibrosPrestadosRow(int id_lib, string titulo_lib, System.DateTime fecha_presta_pre, System.DateTime fecha_devol_pre, int id_lec_pre) {
                 LibrosPrestadosRow rowLibrosPrestadosRow = ((LibrosPrestadosRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         id_lib,
                         titulo_lib,
                         fecha_presta_pre,
-                        fecha_devol_pre};
+                        fecha_devol_pre,
+                        id_lec_pre};
                 rowLibrosPrestadosRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowLibrosPrestadosRow);
                 return rowLibrosPrestadosRow;
@@ -422,6 +433,7 @@ namespace BibliotecaJM {
                 this.columntitulo_lib = base.Columns["titulo_lib"];
                 this.columnfecha_presta_pre = base.Columns["fecha_presta_pre"];
                 this.columnfecha_devol_pre = base.Columns["fecha_devol_pre"];
+                this.columnid_lec_pre = base.Columns["id_lec_pre"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -435,10 +447,13 @@ namespace BibliotecaJM {
                 base.Columns.Add(this.columnfecha_presta_pre);
                 this.columnfecha_devol_pre = new global::System.Data.DataColumn("fecha_devol_pre", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnfecha_devol_pre);
+                this.columnid_lec_pre = new global::System.Data.DataColumn("id_lec_pre", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnid_lec_pre);
                 this.columnid_lib.AllowDBNull = false;
                 this.columntitulo_lib.MaxLength = 50;
                 this.columnfecha_presta_pre.AllowDBNull = false;
                 this.columnfecha_devol_pre.AllowDBNull = false;
+                this.columnid_lec_pre.AllowDBNull = false;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -630,6 +645,17 @@ namespace BibliotecaJM {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public int id_lec_pre {
+                get {
+                    return ((int)(this[this.tableLibrosPrestados.id_lec_preColumn]));
+                }
+                set {
+                    this[this.tableLibrosPrestados.id_lec_preColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bool Istitulo_libNull() {
                 return this.IsNull(this.tableLibrosPrestados.titulo_libColumn);
             }
@@ -804,6 +830,7 @@ namespace BibliotecaJM.DS_LibrosPrestadosTableAdapters {
             tableMapping.ColumnMappings.Add("titulo_lib", "titulo_lib");
             tableMapping.ColumnMappings.Add("fecha_presta_pre", "fecha_presta_pre");
             tableMapping.ColumnMappings.Add("fecha_devol_pre", "fecha_devol_pre");
+            tableMapping.ColumnMappings.Add("id_lec_pre", "id_lec_pre");
             this._adapter.TableMappings.Add(tableMapping);
         }
         
@@ -820,17 +847,15 @@ namespace BibliotecaJM.DS_LibrosPrestadosTableAdapters {
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[2];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT id_lib, titulo_lib, fecha_presta_pre, fecha_devol_pre FROM dbo.LibrosPrest" +
-                "ados";
+            this._commandCollection[0].CommandText = "SELECT id_lib,id_lec_pre, titulo_lib, fecha_presta_pre, fecha_devol_pre FROM Libr" +
+                "osPrestados";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[1] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[1].Connection = this.Connection;
-            this._commandCollection[1].CommandText = "SELECT        id_lib, titulo_lib, fecha_presta_pre, fecha_devol_pre\r\nFROM        " +
-                "    LibrosPrestados\r\nWHERE        (id_lib = @ID) OR\r\n                         (t" +
-                "itulo_lib LIKE \'%\' + @TITULO + \'%\')";
+            this._commandCollection[1].CommandText = "SELECT        fecha_devol_pre, fecha_presta_pre, id_lec_pre, id_lib, titulo_lib\r\n" +
+                "FROM            LibrosPrestados\r\nWHERE        (id_lec_pre = @ID)";
             this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
-            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ID", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "id_lib", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@TITULO", global::System.Data.SqlDbType.NChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "titulo_lib", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ID", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "id_lec_pre", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -861,15 +886,9 @@ namespace BibliotecaJM.DS_LibrosPrestadosTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
-        public virtual int FillByIDorTitulo(DS_LibrosPrestados.LibrosPrestadosDataTable dataTable, int ID, string TITULO) {
+        public virtual int FillByID(DS_LibrosPrestados.LibrosPrestadosDataTable dataTable, int ID) {
             this.Adapter.SelectCommand = this.CommandCollection[1];
             this.Adapter.SelectCommand.Parameters[0].Value = ((int)(ID));
-            if ((TITULO == null)) {
-                this.Adapter.SelectCommand.Parameters[1].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.SelectCommand.Parameters[1].Value = ((string)(TITULO));
-            }
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
             }

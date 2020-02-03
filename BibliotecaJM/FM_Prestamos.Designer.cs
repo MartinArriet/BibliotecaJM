@@ -36,9 +36,7 @@
             System.Windows.Forms.Label label1;
             System.Windows.Forms.Label lbNombre;
             System.Windows.Forms.Label label2;
-            System.Windows.Forms.Label lbDomicilio;
             System.Windows.Forms.Label domicilio_lecLabel;
-            System.Windows.Forms.Label lbFechaPenalizacion;
             System.Windows.Forms.Label fecha_penalizacion_lecLabel;
             System.Windows.Forms.Label id_lecLabel;
             System.Windows.Forms.Label nombre_lecLabel;
@@ -66,12 +64,21 @@
             this.tbTituto = new System.Windows.Forms.TextBox();
             this.tbAutor = new System.Windows.Forms.TextBox();
             this.gbPrestamos = new System.Windows.Forms.GroupBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.lbDomicilio_lec = new System.Windows.Forms.Label();
+            this.lbNombre_lec = new System.Windows.Forms.Label();
+            this.lbId_lec = new System.Windows.Forms.Label();
             this.bBuscarNombrePrestamo = new System.Windows.Forms.Button();
             this.bBuscarIDprestamo = new System.Windows.Forms.Button();
             this.tbIdLectorPrestamo = new System.Windows.Forms.TextBox();
             this.tbNombrePrestamo = new System.Windows.Forms.TextBox();
             this.librosPrestadosTableAdapter = new BibliotecaJM.DS_LibrosPrestadosTableAdapters.LibrosPrestadosTableAdapter();
             this.librosTableAdapter = new BibliotecaJM.DS_LibrosTableAdapters.librosTableAdapter();
+            this.lectoresBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.dS_Lectores = new BibliotecaJM.DS_Lectores();
+            this.lectoresTableAdapter = new BibliotecaJM.DS_LectoresTableAdapters.lectoresTableAdapter();
             id_libLabel = new System.Windows.Forms.Label();
             titulo_libLabel = new System.Windows.Forms.Label();
             autor_libLabel = new System.Windows.Forms.Label();
@@ -79,9 +86,7 @@
             label1 = new System.Windows.Forms.Label();
             lbNombre = new System.Windows.Forms.Label();
             label2 = new System.Windows.Forms.Label();
-            lbDomicilio = new System.Windows.Forms.Label();
             domicilio_lecLabel = new System.Windows.Forms.Label();
-            lbFechaPenalizacion = new System.Windows.Forms.Label();
             fecha_penalizacion_lecLabel = new System.Windows.Forms.Label();
             id_lecLabel = new System.Windows.Forms.Label();
             nombre_lecLabel = new System.Windows.Forms.Label();
@@ -94,6 +99,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.librosBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dS_Libros)).BeginInit();
             this.gbPrestamos.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.lectoresBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dS_Lectores)).BeginInit();
             this.SuspendLayout();
             // 
             // id_libLabel
@@ -126,16 +133,16 @@
             // lbIdLector
             // 
             lbIdLector.AutoSize = true;
-            lbIdLector.Location = new System.Drawing.Point(239, 156);
+            lbIdLector.Location = new System.Drawing.Point(218, 156);
             lbIdLector.Name = "lbIdLector";
             lbIdLector.Size = new System.Drawing.Size(54, 13);
             lbIdLector.TabIndex = 7;
-            lbIdLector.Text = "ID Lector:";
+            lbIdLector.Text = "Provincia:";
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new System.Drawing.Point(36, 156);
+            label1.Location = new System.Drawing.Point(17, 156);
             label1.Name = "label1";
             label1.Size = new System.Drawing.Size(54, 13);
             label1.TabIndex = 7;
@@ -144,56 +151,38 @@
             // lbNombre
             // 
             lbNombre.AutoSize = true;
-            lbNombre.Location = new System.Drawing.Point(239, 186);
+            lbNombre.Location = new System.Drawing.Point(218, 186);
             lbNombre.Name = "lbNombre";
-            lbNombre.Size = new System.Drawing.Size(47, 13);
+            lbNombre.Size = new System.Drawing.Size(35, 13);
             lbNombre.TabIndex = 8;
-            lbNombre.Text = "Nombre:";
+            lbNombre.Text = "Email:";
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new System.Drawing.Point(36, 186);
+            label2.Location = new System.Drawing.Point(17, 186);
             label2.Name = "label2";
             label2.Size = new System.Drawing.Size(47, 13);
             label2.TabIndex = 8;
             label2.Text = "Nombre:";
             // 
-            // lbDomicilio
-            // 
-            lbDomicilio.AutoSize = true;
-            lbDomicilio.Location = new System.Drawing.Point(239, 216);
-            lbDomicilio.Name = "lbDomicilio";
-            lbDomicilio.Size = new System.Drawing.Size(52, 13);
-            lbDomicilio.TabIndex = 4;
-            lbDomicilio.Text = "Domicilio:";
-            // 
             // domicilio_lecLabel
             // 
             domicilio_lecLabel.AutoSize = true;
-            domicilio_lecLabel.Location = new System.Drawing.Point(36, 216);
+            domicilio_lecLabel.Location = new System.Drawing.Point(17, 216);
             domicilio_lecLabel.Name = "domicilio_lecLabel";
             domicilio_lecLabel.Size = new System.Drawing.Size(52, 13);
             domicilio_lecLabel.TabIndex = 4;
             domicilio_lecLabel.Text = "Domicilio:";
             // 
-            // lbFechaPenalizacion
-            // 
-            lbFechaPenalizacion.AutoSize = true;
-            lbFechaPenalizacion.Location = new System.Drawing.Point(239, 248);
-            lbFechaPenalizacion.Name = "lbFechaPenalizacion";
-            lbFechaPenalizacion.Size = new System.Drawing.Size(103, 13);
-            lbFechaPenalizacion.TabIndex = 6;
-            lbFechaPenalizacion.Text = "Fecha Penalizacion:";
-            // 
             // fecha_penalizacion_lecLabel
             // 
             fecha_penalizacion_lecLabel.AutoSize = true;
-            fecha_penalizacion_lecLabel.Location = new System.Drawing.Point(36, 248);
+            fecha_penalizacion_lecLabel.Location = new System.Drawing.Point(218, 216);
             fecha_penalizacion_lecLabel.Name = "fecha_penalizacion_lecLabel";
-            fecha_penalizacion_lecLabel.Size = new System.Drawing.Size(103, 13);
+            fecha_penalizacion_lecLabel.Size = new System.Drawing.Size(96, 13);
             fecha_penalizacion_lecLabel.TabIndex = 6;
-            fecha_penalizacion_lecLabel.Text = "Fecha Penalizacion:";
+            fecha_penalizacion_lecLabel.Text = "Fecha Nacimiento:";
             // 
             // id_lecLabel
             // 
@@ -418,13 +407,17 @@
             // 
             // gbPrestamos
             // 
+            this.gbPrestamos.Controls.Add(this.label8);
+            this.gbPrestamos.Controls.Add(this.label7);
+            this.gbPrestamos.Controls.Add(this.label6);
+            this.gbPrestamos.Controls.Add(this.lbDomicilio_lec);
+            this.gbPrestamos.Controls.Add(this.lbNombre_lec);
+            this.gbPrestamos.Controls.Add(this.lbId_lec);
             this.gbPrestamos.Controls.Add(lbIdLector);
             this.gbPrestamos.Controls.Add(label1);
             this.gbPrestamos.Controls.Add(lbNombre);
             this.gbPrestamos.Controls.Add(label2);
-            this.gbPrestamos.Controls.Add(lbDomicilio);
             this.gbPrestamos.Controls.Add(domicilio_lecLabel);
-            this.gbPrestamos.Controls.Add(lbFechaPenalizacion);
             this.gbPrestamos.Controls.Add(fecha_penalizacion_lecLabel);
             this.gbPrestamos.Controls.Add(this.bBuscarNombrePrestamo);
             this.gbPrestamos.Controls.Add(this.bBuscarIDprestamo);
@@ -438,6 +431,66 @@
             this.gbPrestamos.TabIndex = 3;
             this.gbPrestamos.TabStop = false;
             this.gbPrestamos.Text = "Buscqueda Lector";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.lectoresBindingSource, "email_lec", true));
+            this.label8.Location = new System.Drawing.Point(279, 186);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(10, 13);
+            this.label8.TabIndex = 9;
+            this.label8.Text = "-";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.lectoresBindingSource, "provincia_lec", true));
+            this.label7.Location = new System.Drawing.Point(279, 156);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(10, 13);
+            this.label7.TabIndex = 9;
+            this.label7.Text = "-";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.lectoresBindingSource, "fecha_nacimiento_lec", true));
+            this.label6.Location = new System.Drawing.Point(320, 216);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(10, 13);
+            this.label6.TabIndex = 9;
+            this.label6.Text = "-";
+            // 
+            // lbDomicilio_lec
+            // 
+            this.lbDomicilio_lec.AutoSize = true;
+            this.lbDomicilio_lec.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.lectoresBindingSource, "domicilio_lec", true));
+            this.lbDomicilio_lec.Location = new System.Drawing.Point(97, 216);
+            this.lbDomicilio_lec.Name = "lbDomicilio_lec";
+            this.lbDomicilio_lec.Size = new System.Drawing.Size(10, 13);
+            this.lbDomicilio_lec.TabIndex = 9;
+            this.lbDomicilio_lec.Text = "-";
+            // 
+            // lbNombre_lec
+            // 
+            this.lbNombre_lec.AutoSize = true;
+            this.lbNombre_lec.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.lectoresBindingSource, "nombre_lec", true));
+            this.lbNombre_lec.Location = new System.Drawing.Point(97, 186);
+            this.lbNombre_lec.Name = "lbNombre_lec";
+            this.lbNombre_lec.Size = new System.Drawing.Size(10, 13);
+            this.lbNombre_lec.TabIndex = 9;
+            this.lbNombre_lec.Text = "-";
+            // 
+            // lbId_lec
+            // 
+            this.lbId_lec.AutoSize = true;
+            this.lbId_lec.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.lectoresBindingSource, "id_lec", true));
+            this.lbId_lec.Location = new System.Drawing.Point(97, 156);
+            this.lbId_lec.Name = "lbId_lec";
+            this.lbId_lec.Size = new System.Drawing.Size(10, 13);
+            this.lbId_lec.TabIndex = 9;
+            this.lbId_lec.Text = "-";
             // 
             // bBuscarNombrePrestamo
             // 
@@ -481,6 +534,20 @@
             // 
             this.librosTableAdapter.ClearBeforeFill = true;
             // 
+            // lectoresBindingSource
+            // 
+            this.lectoresBindingSource.DataMember = "lectores";
+            this.lectoresBindingSource.DataSource = this.dS_Lectores;
+            // 
+            // dS_Lectores
+            // 
+            this.dS_Lectores.DataSetName = "DS_Lectores";
+            this.dS_Lectores.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // lectoresTableAdapter
+            // 
+            this.lectoresTableAdapter.ClearBeforeFill = true;
+            // 
             // FM_Prestamos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -501,6 +568,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.dS_Libros)).EndInit();
             this.gbPrestamos.ResumeLayout(false);
             this.gbPrestamos.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.lectoresBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dS_Lectores)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -537,5 +606,14 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn titulolibDataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn autorlibDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn prestadosnlibDataGridViewTextBoxColumn;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label lbDomicilio_lec;
+        private System.Windows.Forms.Label lbNombre_lec;
+        private System.Windows.Forms.Label lbId_lec;
+        private DS_Lectores dS_Lectores;
+        private System.Windows.Forms.BindingSource lectoresBindingSource;
+        private DS_LectoresTableAdapters.lectoresTableAdapter lectoresTableAdapter;
     }
 }

@@ -20,6 +20,7 @@ namespace BibliotecaJM
         public FM_Configuracion(UsuarioActual usuarioActual)
         {
             this.usuarioActual = usuarioActual;
+            InitializeComponent();
         }
     }
 }
