@@ -65,6 +65,8 @@
             this.tbAutor = new System.Windows.Forms.TextBox();
             this.gbPrestamos = new System.Windows.Forms.GroupBox();
             this.label8 = new System.Windows.Forms.Label();
+            this.lectoresBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.dS_Lectores = new BibliotecaJM.DS_Lectores();
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.lbDomicilio_lec = new System.Windows.Forms.Label();
@@ -76,8 +78,6 @@
             this.tbNombrePrestamo = new System.Windows.Forms.TextBox();
             this.librosPrestadosTableAdapter = new BibliotecaJM.DS_LibrosPrestadosTableAdapters.LibrosPrestadosTableAdapter();
             this.librosTableAdapter = new BibliotecaJM.DS_LibrosTableAdapters.librosTableAdapter();
-            this.lectoresBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.dS_Lectores = new BibliotecaJM.DS_Lectores();
             this.lectoresTableAdapter = new BibliotecaJM.DS_LectoresTableAdapters.lectoresTableAdapter();
             id_libLabel = new System.Windows.Forms.Label();
             titulo_libLabel = new System.Windows.Forms.Label();
@@ -295,6 +295,7 @@
             this.Prestamar.TabIndex = 10;
             this.Prestamar.Text = "REALIZAR PRESTAMO";
             this.Prestamar.UseVisualStyleBackColor = true;
+            this.Prestamar.Click += new System.EventHandler(this.Prestamar_Click);
             // 
             // librosDataGridView
             // 
@@ -365,6 +366,7 @@
             this.bBuscarAutor.TabIndex = 6;
             this.bBuscarAutor.Text = "Buscar";
             this.bBuscarAutor.UseVisualStyleBackColor = true;
+            this.bBuscarAutor.Click += new System.EventHandler(this.bBuscarAutor_Click);
             // 
             // bBuscarTitulo
             // 
@@ -374,6 +376,7 @@
             this.bBuscarTitulo.TabIndex = 6;
             this.bBuscarTitulo.Text = "Buscar";
             this.bBuscarTitulo.UseVisualStyleBackColor = true;
+            this.bBuscarTitulo.Click += new System.EventHandler(this.bBuscarTitulo_Click);
             // 
             // bBuscarIdentificador
             // 
@@ -383,6 +386,7 @@
             this.bBuscarIdentificador.TabIndex = 6;
             this.bBuscarIdentificador.Text = "Buscar";
             this.bBuscarIdentificador.UseVisualStyleBackColor = true;
+            this.bBuscarIdentificador.Click += new System.EventHandler(this.bBuscarIdentificador_Click);
             // 
             // tbIdentificador
             // 
@@ -441,6 +445,16 @@
             this.label8.Size = new System.Drawing.Size(10, 13);
             this.label8.TabIndex = 9;
             this.label8.Text = "-";
+            // 
+            // lectoresBindingSource
+            // 
+            this.lectoresBindingSource.DataMember = "lectores";
+            this.lectoresBindingSource.DataSource = this.dS_Lectores;
+            // 
+            // dS_Lectores
+            // 
+            this.dS_Lectores.DataSetName = "DS_Lectores";
+            this.dS_Lectores.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // label7
             // 
@@ -533,16 +547,6 @@
             // librosTableAdapter
             // 
             this.librosTableAdapter.ClearBeforeFill = true;
-            // 
-            // lectoresBindingSource
-            // 
-            this.lectoresBindingSource.DataMember = "lectores";
-            this.lectoresBindingSource.DataSource = this.dS_Lectores;
-            // 
-            // dS_Lectores
-            // 
-            this.dS_Lectores.DataSetName = "DS_Lectores";
-            this.dS_Lectores.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // lectoresTableAdapter
             // 

@@ -39,7 +39,7 @@ namespace BibliotecaJM
             if (Int32.Parse(tbIdLectorPrestamo.Text) !=-1)
             {
                 this.lectoresTableAdapter.FillByIDorNombre(this.dS_Lectores.lectores, Int32.Parse(tbIdLectorPrestamo.Text),null);
-                //this.librosPrestadosTableAdapter.FillByID(this.dS_LibrosPrestados.LibrosPrestados,);
+                this.librosPrestadosTableAdapter.FillByID(this.dS_LibrosPrestados.LibrosPrestados,Int32.Parse(tbIdLectorPrestamo.Text));
             }
         }
 
@@ -47,8 +47,34 @@ namespace BibliotecaJM
         {
             if (tbNombrePrestamo.Text !="")
             {
-                this.lectoresTableAdapter.FillByIDorNombre(this.dS_Lectores.lectores, -1, tbNombrePrestamo.Text);
+                this.lectoresTableAdapter.FillByIDorNombre(this.dS_Lectores.lectores,-1 , tbNombrePrestamo.Text);
+                if (this.dS_Lectores.lectores.Count > 0)
+                {
+                    int id = this.dS_Lectores.lectores[0].id_lec;
+                    this.librosPrestadosTableAdapter.FillByID(this.dS_LibrosPrestados.LibrosPrestados,id);
+
+                }
             }
+        }
+
+        private void Prestamar_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void bBuscarIdentificador_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void bBuscarTitulo_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void bBuscarAutor_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
