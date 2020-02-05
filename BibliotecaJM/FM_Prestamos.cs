@@ -39,7 +39,7 @@ namespace BibliotecaJM
             if (Int32.Parse(tbIdLectorPrestamo.Text) !=-1)
             {
                 this.lectoresTableAdapter.FillByIDorNombre(this.dS_Lectores.lectores, Int32.Parse(tbIdLectorPrestamo.Text),null);
-                this.librosPrestadosTableAdapter.FillByID(this.dS_LibrosPrestados.LibrosPrestados,);
+                //this.librosPrestadosTableAdapter.FillByID(this.dS_LibrosPrestados.LibrosPrestados,);
             }
         }
 
