@@ -69,6 +69,7 @@ namespace BibliotecaJM
 
         private void toolStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
+
             foreach (ToolStripButton boton in toolStrip1.Items)
                 boton.CheckState = CheckState.Unchecked;
         }
